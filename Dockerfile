@@ -2,15 +2,18 @@ FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 
-# Copy source code
+# Copy all files (including conf/traccar.xml)
 COPY . .
 
-# Build the server
+# Create logs dir to prevent log error
+RUN mkdir -p logs
+
+# Build project
 RUN ./gradlew build
 
-# Expose the port Render expects
+# Expose port expected by Render
 ENV PORT=8082
 EXPOSE 8082
 
-# Start the server with your config
+# Run Traccar with the embedded config
 CMD ["java", "-jar", "target/tracker-server.jar", "conf/traccar.xml"]
