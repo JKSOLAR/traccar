@@ -7,7 +7,7 @@
 
   <entry key='config.default'>false</entry>
 
-  <!-- Must match Railway PORT -->
+  <!-- Must match Render PORT -->
   <entry key='web.port'>8082</entry>
 
   <!-- Internal DB for testing -->
